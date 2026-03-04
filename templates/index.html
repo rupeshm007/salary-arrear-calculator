@@ -65,12 +65,29 @@ href="{{ url_for('static',filename='style.css') }}">
 <td></td>
 <td></td>
 
-<td><input class="salary form-control" id="2022-09" name="2022-09" oninput="fillYear(this)"></td>
-<td><input class="salary form-control" id="2022-10" name="2022-10"></td>
-<td><input class="salary form-control" id="2022-11" name="2022-11"></td>
-<td><input class="salary form-control" id="2022-12" name="2022-12"></td>
+<td><input class="salary form-control"
+id="2022-09"
+name="2022-09"
+value="{{ form_data.get('2022-09','') }}"
+oninput="fillYear(this)"></td>
+
+<td><input class="salary form-control"
+name="2022-10"
+id="2022-10"
+value="{{ form_data.get('2022-10','') }}"></td>
+
+<td><input class="salary form-control"
+name="2022-11"
+id="2022-11"
+value="{{ form_data.get('2022-11','') }}"></td>
+
+<td><input class="salary form-control"
+name="2022-12"
+id="2022-12"
+value="{{ form_data.get('2022-12','') }}"></td>
 
 </tr>
+
 
 <!-- 2023 -->
 
@@ -78,20 +95,38 @@ href="{{ url_for('static',filename='style.css') }}">
 
 <td><b>2023</b></td>
 
-<td><input class="salary form-control" id="2023-01" name="2023-01"></td>
-<td><input class="salary form-control" id="2023-02" name="2023-02"></td>
-<td><input class="salary form-control" id="2023-03" name="2023-03"></td>
-<td><input class="salary form-control" id="2023-04" name="2023-04"></td>
-<td><input class="salary form-control" id="2023-05" name="2023-05"></td>
-<td><input class="salary form-control" id="2023-06" name="2023-06"></td>
-<td><input class="salary form-control" id="2023-07" name="2023-07"></td>
-<td><input class="salary form-control" id="2023-08" name="2023-08"></td>
-<td><input class="salary form-control" id="2023-09" name="2023-09" oninput="fillYear(this)"></td>
-<td><input class="salary form-control" id="2023-10" name="2023-10"></td>
-<td><input class="salary form-control" id="2023-11" name="2023-11"></td>
-<td><input class="salary form-control" id="2023-12" name="2023-12"></td>
+{% for m in ["01","02","03","04","05","06","07","08"] %}
+
+<td>
+<input class="salary form-control"
+name="2023-{{m}}"
+id="2023-{{m}}"
+value="{{ form_data.get('2023-' + m,'') }}">
+</td>
+
+{% endfor %}
+
+<td>
+<input class="salary form-control"
+name="2023-09"
+id="2023-09"
+value="{{ form_data.get('2023-09','') }}"
+oninput="fillYear(this)">
+</td>
+
+{% for m in ["10","11","12"] %}
+
+<td>
+<input class="salary form-control"
+name="2023-{{m}}"
+id="2023-{{m}}"
+value="{{ form_data.get('2023-' + m,'') }}">
+</td>
+
+{% endfor %}
 
 </tr>
+
 
 <!-- 2024 -->
 
@@ -99,20 +134,38 @@ href="{{ url_for('static',filename='style.css') }}">
 
 <td><b>2024</b></td>
 
-<td><input class="salary form-control" id="2024-01" name="2024-01"></td>
-<td><input class="salary form-control" id="2024-02" name="2024-02"></td>
-<td><input class="salary form-control" id="2024-03" name="2024-03"></td>
-<td><input class="salary form-control" id="2024-04" name="2024-04"></td>
-<td><input class="salary form-control" id="2024-05" name="2024-05"></td>
-<td><input class="salary form-control" id="2024-06" name="2024-06"></td>
-<td><input class="salary form-control" id="2024-07" name="2024-07"></td>
-<td><input class="salary form-control" id="2024-08" name="2024-08"></td>
-<td><input class="salary form-control" id="2024-09" name="2024-09" oninput="fillYear(this)"></td>
-<td><input class="salary form-control" id="2024-10" name="2024-10"></td>
-<td><input class="salary form-control" id="2024-11" name="2024-11"></td>
-<td><input class="salary form-control" id="2024-12" name="2024-12"></td>
+{% for m in ["01","02","03","04","05","06","07","08"] %}
+
+<td>
+<input class="salary form-control"
+name="2024-{{m}}"
+id="2024-{{m}}"
+value="{{ form_data.get('2024-' + m,'') }}">
+</td>
+
+{% endfor %}
+
+<td>
+<input class="salary form-control"
+name="2024-09"
+id="2024-09"
+value="{{ form_data.get('2024-09','') }}"
+oninput="fillYear(this)">
+</td>
+
+{% for m in ["10","11","12"] %}
+
+<td>
+<input class="salary form-control"
+name="2024-{{m}}"
+id="2024-{{m}}"
+value="{{ form_data.get('2024-' + m,'') }}">
+</td>
+
+{% endfor %}
 
 </tr>
+
 
 <!-- 2025 -->
 
@@ -120,20 +173,38 @@ href="{{ url_for('static',filename='style.css') }}">
 
 <td><b>2025</b></td>
 
-<td><input class="salary form-control" id="2025-01" name="2025-01"></td>
-<td><input class="salary form-control" id="2025-02" name="2025-02"></td>
-<td><input class="salary form-control" id="2025-03" name="2025-03"></td>
-<td><input class="salary form-control" id="2025-04" name="2025-04"></td>
-<td><input class="salary form-control" id="2025-05" name="2025-05"></td>
-<td><input class="salary form-control" id="2025-06" name="2025-06"></td>
-<td><input class="salary form-control" id="2025-07" name="2025-07"></td>
-<td><input class="salary form-control" id="2025-08" name="2025-08"></td>
-<td><input class="salary form-control" id="2025-09" name="2025-09" oninput="fillYear(this)"></td>
-<td><input class="salary form-control" id="2025-10" name="2025-10"></td>
-<td><input class="salary form-control" id="2025-11" name="2025-11"></td>
-<td><input class="salary form-control" id="2025-12" name="2025-12"></td>
+{% for m in ["01","02","03","04","05","06","07","08"] %}
+
+<td>
+<input class="salary form-control"
+name="2025-{{m}}"
+id="2025-{{m}}"
+value="{{ form_data.get('2025-' + m,'') }}">
+</td>
+
+{% endfor %}
+
+<td>
+<input class="salary form-control"
+name="2025-09"
+id="2025-09"
+value="{{ form_data.get('2025-09','') }}"
+oninput="fillYear(this)">
+</td>
+
+{% for m in ["10","11","12"] %}
+
+<td>
+<input class="salary form-control"
+name="2025-{{m}}"
+id="2025-{{m}}"
+value="{{ form_data.get('2025-' + m,'') }}">
+</td>
+
+{% endfor %}
 
 </tr>
+
 
 <!-- 2026 -->
 
@@ -141,9 +212,26 @@ href="{{ url_for('static',filename='style.css') }}">
 
 <td><b>2026</b></td>
 
-<td><input class="salary form-control" id="2026-01" name="2026-01"></td>
-<td><input class="salary form-control" id="2026-02" name="2026-02"></td>
-<td><input class="salary form-control" id="2026-03" name="2026-03"></td>
+<td>
+<input class="salary form-control"
+name="2026-01"
+id="2026-01"
+value="{{ form_data.get('2026-01','') }}">
+</td>
+
+<td>
+<input class="salary form-control"
+name="2026-02"
+id="2026-02"
+value="{{ form_data.get('2026-02','') }}">
+</td>
+
+<td>
+<input class="salary form-control"
+name="2026-03"
+id="2026-03"
+value="{{ form_data.get('2026-03','') }}">
+</td>
 
 <td colspan="9"></td>
 
@@ -155,7 +243,52 @@ href="{{ url_for('static',filename='style.css') }}">
 
 </div>
 
-<div class="text-center">
+
+<!-- Leave surrender section -->
+
+<h4 class="mt-4">Leave Surrender</h4>
+
+<table class="table table-bordered text-center">
+
+<tr>
+<th>Year</th>
+<th>Leave Surrender Amount</th>
+</tr>
+
+<tr>
+<td>2023</td>
+<td>
+<input type="number"
+name="leave_2023"
+class="form-control"
+value="{{ form_data.get('leave_2023','') }}">
+</td>
+</tr>
+
+<tr>
+<td>2024</td>
+<td>
+<input type="number"
+name="leave_2024"
+class="form-control"
+value="{{ form_data.get('leave_2024','') }}">
+</td>
+</tr>
+
+<tr>
+<td>2025</td>
+<td>
+<input type="number"
+name="leave_2025"
+class="form-control"
+value="{{ form_data.get('leave_2025','') }}">
+</td>
+</tr>
+
+</table>
+
+
+<div class="text-center mt-3">
 
 <button class="btn btn-success btn-lg">
 Calculate Arrear
@@ -165,33 +298,66 @@ Calculate Arrear
 
 </form>
 
+
 {% if results %}
 
-<h4 class="mt-4">Arrear Details</h4>
+<h4 class="mt-4">Salary Arrear Details</h4>
 
 <table class="table table-bordered">
 
 <tr>
 <th>Month</th>
-<th>Basic</th>
-<th>%</th>
+<th>Old Basic</th>
+<th>Arrear %</th>
 <th>Arrear</th>
+<th>Revised Basic</th>
 </tr>
 
 {% for r in results %}
 
 <tr>
-
 <td>{{r.month}}</td>
 <td>{{r.basic}}</td>
 <td>{{r.percent}}</td>
 <td>{{r.arrear}}</td>
-
+<td>{{r.revised_basic}}</td>
 </tr>
 
 {% endfor %}
 
 </table>
+
+{% endif %}
+
+
+{% if leave_results %}
+
+<h4>Leave Surrender Arrear</h4>
+
+<table class="table table-bordered">
+
+<tr>
+<th>Year</th>
+<th>Leave Amount</th>
+<th>35% Arrear</th>
+</tr>
+
+{% for r in leave_results %}
+
+<tr>
+<td>{{r.year}}</td>
+<td>{{r.amount}}</td>
+<td>{{r.arrear}}</td>
+</tr>
+
+{% endfor %}
+
+</table>
+
+{% endif %}
+
+
+{% if results or leave_results %}
 
 <div class="alert alert-success text-center">
 
@@ -199,8 +365,13 @@ Calculate Arrear
 
 </div>
 
-<a href="/excel" class="btn btn-primary">Download Excel</a>
-<a href="/pdf" class="btn btn-danger">Download PDF</a>
+<a href="/excel" class="btn btn-primary">
+Download Excel
+</a>
+
+<a href="/pdf" class="btn btn-danger">
+Download PDF
+</a>
 
 {% endif %}
 
@@ -209,4 +380,5 @@ Calculate Arrear
 <script src="{{ url_for('static',filename='script.js') }}"></script>
 
 </body>
+
 </html>

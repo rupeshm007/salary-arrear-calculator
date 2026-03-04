@@ -1,55 +1,67 @@
-from flask import Flask,render_template,request,send_file
+from flask import Flask, render_template, request, send_file
 from arrear_calculator import calculate_arrear
 from export_excel import create_excel
 from export_pdf import create_pdf
 
-app=Flask(__name__)
+app = Flask(__name__)
 
-results=[]
-total=0
+results = []
+leave_results = []
+total = 0
 
 
-@app.route("/",methods=["GET","POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
 
-    global results,total
+    global results, leave_results, total
 
-    if request.method=="POST":
+    form_data = {}
 
-        data={}
+    if request.method == "POST":
 
-        for key,value in request.form.items():
+        data = {}
+        leave_data = {}
+
+        for key, value in request.form.items():
 
             if value:
-                data[key]=float(value)
 
-        results,total=calculate_arrear(data)
+                form_data[key] = value
+
+                # Leave surrender fields
+                if key.startswith("leave_"):
+                    leave_data[key] = float(value)
+
+                # Monthly salary fields
+                else:
+                    data[key] = float(value)
+
+        results, leave_results, total = calculate_arrear(data, leave_data)
 
     return render_template(
         "index.html",
         results=results,
-        total_arrear=total
+        leave_results=leave_results,
+        total_arrear=total,
+        form_data=form_data
     )
 
 
 @app.route("/excel")
 def excel():
 
-    file=create_excel(results)
+    file = create_excel(results, leave_results, total)
 
-    return send_file(file,as_attachment=True)
+    return send_file(file, as_attachment=True)
 
 
 @app.route("/pdf")
 def pdf():
 
-    file=create_pdf(results,total)
+    file = create_pdf(results, leave_results, total)
 
-    return send_file(file,as_attachment=True)
+    return send_file(file, as_attachment=True)
 
-
-# if __name__=="__main__":
-#     app.run(debug=True)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
