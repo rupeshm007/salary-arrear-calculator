@@ -1,384 +1,455 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-
-<title>Salary Arrear Calculator</title>
-
-<link rel="stylesheet"
-href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-
-<link rel="stylesheet"
-href="{{ url_for('static',filename='style.css') }}">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salary Arrear Calculator</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
-
 <body>
-
-<div class="container mt-4">
-
-<h2 class="text-center mb-4">Salary Arrear Calculator</h2>
-
-<form method="post">
-
-<div class="table-responsive">
-
-<table class="table table-bordered text-center">
-
-<thead>
-
-<tr>
-
-<th>Year</th>
-
-<th>Jan</th>
-<th>Feb</th>
-<th>Mar</th>
-<th>Apr</th>
-<th>May</th>
-<th>Jun</th>
-<th>Jul</th>
-<th>Aug</th>
-<th>Sep</th>
-<th>Oct</th>
-<th>Nov</th>
-<th>Dec</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<!-- 2022 -->
-
-<tr>
-
-<td><b>2022</b></td>
-
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-
-<td><input class="salary form-control"
-id="2022-09"
-name="2022-09"
-value="{{ form_data.get('2022-09','') }}"
-oninput="fillYear(this)"></td>
-
-<td><input class="salary form-control"
-name="2022-10"
-id="2022-10"
-value="{{ form_data.get('2022-10','') }}"></td>
-
-<td><input class="salary form-control"
-name="2022-11"
-id="2022-11"
-value="{{ form_data.get('2022-11','') }}"></td>
-
-<td><input class="salary form-control"
-name="2022-12"
-id="2022-12"
-value="{{ form_data.get('2022-12','') }}"></td>
-
-</tr>
-
-
-<!-- 2023 -->
-
-<tr>
-
-<td><b>2023</b></td>
-
-{% for m in ["01","02","03","04","05","06","07","08"] %}
-
-<td>
-<input class="salary form-control"
-name="2023-{{m}}"
-id="2023-{{m}}"
-value="{{ form_data.get('2023-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-<td>
-<input class="salary form-control"
-name="2023-09"
-id="2023-09"
-value="{{ form_data.get('2023-09','') }}"
-oninput="fillYear(this)">
-</td>
-
-{% for m in ["10","11","12"] %}
-
-<td>
-<input class="salary form-control"
-name="2023-{{m}}"
-id="2023-{{m}}"
-value="{{ form_data.get('2023-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-</tr>
-
-
-<!-- 2024 -->
-
-<tr>
-
-<td><b>2024</b></td>
-
-{% for m in ["01","02","03","04","05","06","07","08"] %}
-
-<td>
-<input class="salary form-control"
-name="2024-{{m}}"
-id="2024-{{m}}"
-value="{{ form_data.get('2024-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-<td>
-<input class="salary form-control"
-name="2024-09"
-id="2024-09"
-value="{{ form_data.get('2024-09','') }}"
-oninput="fillYear(this)">
-</td>
-
-{% for m in ["10","11","12"] %}
-
-<td>
-<input class="salary form-control"
-name="2024-{{m}}"
-id="2024-{{m}}"
-value="{{ form_data.get('2024-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-</tr>
-
-
-<!-- 2025 -->
-
-<tr>
-
-<td><b>2025</b></td>
-
-{% for m in ["01","02","03","04","05","06","07","08"] %}
-
-<td>
-<input class="salary form-control"
-name="2025-{{m}}"
-id="2025-{{m}}"
-value="{{ form_data.get('2025-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-<td>
-<input class="salary form-control"
-name="2025-09"
-id="2025-09"
-value="{{ form_data.get('2025-09','') }}"
-oninput="fillYear(this)">
-</td>
-
-{% for m in ["10","11","12"] %}
-
-<td>
-<input class="salary form-control"
-name="2025-{{m}}"
-id="2025-{{m}}"
-value="{{ form_data.get('2025-' + m,'') }}">
-</td>
-
-{% endfor %}
-
-</tr>
-
-
-<!-- 2026 -->
-
-<tr>
-
-<td><b>2026</b></td>
-
-<td>
-<input class="salary form-control"
-name="2026-01"
-id="2026-01"
-value="{{ form_data.get('2026-01','') }}">
-</td>
-
-<td>
-<input class="salary form-control"
-name="2026-02"
-id="2026-02"
-value="{{ form_data.get('2026-02','') }}">
-</td>
-
-<td>
-<input class="salary form-control"
-name="2026-03"
-id="2026-03"
-value="{{ form_data.get('2026-03','') }}">
-</td>
-
-<td colspan="9"></td>
-
-</tr>
-
-</tbody>
-
-</table>
-
-</div>
-
-
-<!-- Leave surrender section -->
-
-<h4 class="mt-4">Leave Surrender</h4>
-
-<table class="table table-bordered text-center">
-
-<tr>
-<th>Year</th>
-<th>Leave Surrender Amount</th>
-</tr>
-
-<tr>
-<td>2023</td>
-<td>
-<input type="number"
-name="leave_2023"
-class="form-control"
-value="{{ form_data.get('leave_2023','') }}">
-</td>
-</tr>
-
-<tr>
-<td>2024</td>
-<td>
-<input type="number"
-name="leave_2024"
-class="form-control"
-value="{{ form_data.get('leave_2024','') }}">
-</td>
-</tr>
-
-<tr>
-<td>2025</td>
-<td>
-<input type="number"
-name="leave_2025"
-class="form-control"
-value="{{ form_data.get('leave_2025','') }}">
-</td>
-</tr>
-
-</table>
-
-
-<div class="text-center mt-3">
-
-<button class="btn btn-success btn-lg">
-Calculate Arrear
-</button>
-
-</div>
-
-</form>
-
-
-{% if results %}
-
-<h4 class="mt-4">Salary Arrear Details</h4>
-
-<table class="table table-bordered">
-
-<tr>
-<th>Month</th>
-<th>Old Basic</th>
-<th>Arrear %</th>
-<th>Arrear</th>
-<th>Revised Basic</th>
-</tr>
-
-{% for r in results %}
-
-<tr>
-<td>{{r.month}}</td>
-<td>{{r.basic}}</td>
-<td>{{r.percent}}</td>
-<td>{{r.arrear}}</td>
-<td>{{r.revised_basic}}</td>
-</tr>
-
-{% endfor %}
-
-</table>
-
-{% endif %}
-
-
-{% if leave_results %}
-
-<h4>Leave Surrender Arrear</h4>
-
-<table class="table table-bordered">
-
-<tr>
-<th>Year</th>
-<th>Leave Amount</th>
-<th>35% Arrear</th>
-</tr>
-
-{% for r in leave_results %}
-
-<tr>
-<td>{{r.year}}</td>
-<td>{{r.amount}}</td>
-<td>{{r.arrear}}</td>
-</tr>
-
-{% endfor %}
-
-</table>
-
-{% endif %}
-
-
-{% if results or leave_results %}
-
-<div class="alert alert-success text-center">
-
-<b>Total Arrear : ₹ {{total_arrear}}</b>
-
-</div>
-
-<a href="/excel" class="btn btn-primary">
-Download Excel
-</a>
-
-<a href="/pdf" class="btn btn-danger">
-Download PDF
-</a>
-
-{% endif %}
-
-</div>
-
-<script src="{{ url_for('static',filename='script.js') }}"></script>
-
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="text-center mb-4">
+            <h2>Salary Arrear Calculator</h2>
+            <p class="text-muted">Calculate salary arrears for the period Sep 2022 - Mar 2026</p>
+        </div>
+
+        <!-- Main Form - Wrapping everything -->
+        <form method="post" id="salaryForm">
+            <!-- Employee Details Card -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Employee Details</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" 
+                                   name="emp_name" 
+                                   class="form-control" 
+                                   value="{{ form_data.get('emp_name', '') }}"
+                                   placeholder="Enter employee name"
+                                   required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Designation</label>
+                            <input type="text" 
+                                   name="designation" 
+                                   class="form-control" 
+                                   value="{{ form_data.get('designation', '') }}"
+                                   placeholder="Enter designation"
+                                   required>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Employee ID</label>
+                            <input type="text" 
+                                   name="emp_id" 
+                                   pattern="[0-9]{6}"
+                                   title="Enter 6 digit employee ID"
+                                   class="form-control" 
+                                   value="{{ form_data.get('emp_id', '') }}"
+                                   placeholder="6-digit ID"
+                                   required>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Starting Salary Card -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Starting Salary</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label class="form-label">Salary for September 2022</label>
+                            <div class="input-group">
+                                <span class="input-group-text">₹</span>
+                                <input type="number"
+                                       id="start_salary"
+                                       class="form-control"
+                                       placeholder="Enter Sep 2022 salary"
+                                       min="0">
+                                <!-- Removed step="100" -->
+                            </div>
+                            <small class="text-muted">This will auto-fill all subsequent months</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Monthly Salary Section -->
+            <div id="salary_section" style="display:none">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0">Monthly Salary Details</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="alert alert-info">
+                            <i class="fas fa-info-circle me-2"></i>
+                            If any change in salary from any month, please enter that amount in that month. September salaries automatically increase by 2%.
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Jan</th>
+                                        <th>Feb</th>
+                                        <th>Mar</th>
+                                        <th>Apr</th>
+                                        <th>May</th>
+                                        <th>Jun</th>
+                                        <th>Jul</th>
+                                        <th>Aug</th>
+                                        <th>Sep</th>
+                                        <th>Oct</th>
+                                        <th>Nov</th>
+                                        <th>Dec</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- 2022 -->
+                                    <tr>
+                                        <td><b>2022</b></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   id="2022-09"
+                                                   name="2022-09"
+                                                   value="{{ form_data.get('2022-09','') }}"
+                                                   oninput="fillYear(this)">
+                                        </td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2022-10"
+                                                   id="2022-10"
+                                                   value="{{ form_data.get('2022-10','') }}">
+                                        </td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2022-11"
+                                                   id="2022-11"
+                                                   value="{{ form_data.get('2022-11','') }}">
+                                        </td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2022-12"
+                                                   id="2022-12"
+                                                   value="{{ form_data.get('2022-12','') }}">
+                                        </td>
+                                    </tr>
+
+                                    <!-- 2023 -->
+                                    <tr>
+                                        <td><b>2023</b></td>
+                                        {% for m in ["01","02","03","04","05","06","07","08"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2023-{{m}}"
+                                                   id="2023-{{m}}"
+                                                   value="{{ form_data.get('2023-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2023-09"
+                                                   id="2023-09"
+                                                   value="{{ form_data.get('2023-09','') }}"
+                                                   oninput="fillYear(this)">
+                                        </td>
+                                        {% for m in ["10","11","12"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2023-{{m}}"
+                                                   id="2023-{{m}}"
+                                                   value="{{ form_data.get('2023-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+
+                                    <!-- 2024 -->
+                                    <tr>
+                                        <td><b>2024</b></td>
+                                        {% for m in ["01","02","03","04","05","06","07","08"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2024-{{m}}"
+                                                   id="2024-{{m}}"
+                                                   value="{{ form_data.get('2024-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2024-09"
+                                                   id="2024-09"
+                                                   value="{{ form_data.get('2024-09','') }}"
+                                                   oninput="fillYear(this)">
+                                        </td>
+                                        {% for m in ["10","11","12"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2024-{{m}}"
+                                                   id="2024-{{m}}"
+                                                   value="{{ form_data.get('2024-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+
+                                    <!-- 2025 -->
+                                    <tr>
+                                        <td><b>2025</b></td>
+                                        {% for m in ["01","02","03","04","05","06","07","08"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2025-{{m}}"
+                                                   id="2025-{{m}}"
+                                                   value="{{ form_data.get('2025-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2025-09"
+                                                   id="2025-09"
+                                                   value="{{ form_data.get('2025-09','') }}"
+                                                   oninput="fillYear(this)">
+                                        </td>
+                                        {% for m in ["10","11","12"] %}
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2025-{{m}}"
+                                                   id="2025-{{m}}"
+                                                   value="{{ form_data.get('2025-' + m,'') }}">
+                                        </td>
+                                        {% endfor %}
+                                    </tr>
+
+                                    <!-- 2026 -->
+                                    <tr>
+                                        <td><b>2026</b></td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2026-01"
+                                                   id="2026-01"
+                                                   value="{{ form_data.get('2026-01','') }}">
+                                        </td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2026-02"
+                                                   id="2026-02"
+                                                   value="{{ form_data.get('2026-02','') }}">
+                                        </td>
+                                        <td>
+                                            <input class="salary form-control"
+                                                   name="2026-03"
+                                                   id="2026-03"
+                                                   value="{{ form_data.get('2026-03','') }}">
+                                        </td>
+                                        <td colspan="9"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leave Surrender Section -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0">Leave Surrender</h5>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered text-center">
+                            <thead>
+                                <tr>
+                                    <th>Year</th>
+                                    <th>Leave Surrender Amount (₹)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><b>2023</b></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₹</span>
+                                            <input type="number" 
+                                                   id="leave_2023" 
+                                                   name="leave_2023" 
+                                                   class="form-control"
+                                                   value="{{ form_data.get('leave_2023', '') }}"
+                                                   placeholder="Auto-filled from April salary"
+                                                   min="0">
+                                            <!-- Removed step="100" -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>2024</b></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₹</span>
+                                            <input type="number" 
+                                                   id="leave_2024" 
+                                                   name="leave_2024" 
+                                                   class="form-control"
+                                                   value="{{ form_data.get('leave_2024', '') }}"
+                                                   placeholder="Auto-filled from April salary"
+                                                   min="0">
+                                            <!-- Removed step="100" -->
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><b>2025</b></td>
+                                    <td>
+                                        <div class="input-group">
+                                            <span class="input-group-text">₹</span>
+                                            <input type="number" 
+                                                   id="leave_2025" 
+                                                   name="leave_2025" 
+                                                   class="form-control"
+                                                   value="{{ form_data.get('leave_2025', '') }}"
+                                                   placeholder="Auto-filled from April salary"
+                                                   min="0">
+                                            <!-- Removed step="100" -->
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <small class="text-muted">
+                        <i class="fas fa-info-circle me-1"></i>
+                        Leave amounts are automatically populated from April salaries
+                    </small>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="text-center mt-3 mb-4">
+                <button type="submit" class="btn btn-success btn-lg">
+                    <i class="fas fa-calculator me-2"></i>
+                    Calculate Arrear
+                </button>
+                <button type="button" class="btn btn-secondary btn-lg" onclick="clearAllFields()">
+                    <i class="fas fa-eraser me-2"></i>
+                    Clear All
+                </button>
+            </div>
+        </form>
+
+        <!-- Results Section (same as before) -->
+        {% if results %}
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Salary Arrear Details</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Old Basic (₹)</th>
+                                <th>Arrear %</th>
+                                <th>Arrear (₹)</th>
+                                <th>Revised Basic (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in results %}
+                            <tr>
+                                <td><b>{{r.month}}</b></td>
+                                <td>₹ {{ "{:,.0f}".format(r.basic) }}</td>
+                                <td>{{r.percent}}%</td>
+                                <td class="text-success fw-bold">₹ {{ "{:,.0f}".format(r.arrear) }}</td>
+                                <td>₹ {{ "{:,.0f}".format(r.revised_basic) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if leave_results %}
+        <div class="card mt-4">
+            <div class="card-header">
+                <h5 class="mb-0">Leave Surrender Arrear</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Year</th>
+                                <th>Leave Amount (₹)</th>
+                                <th>35% Arrear (₹)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for r in leave_results %}
+                            <tr>
+                                <td><b>{{r.year}}</b></td>
+                                <td>₹ {{ "{:,.0f}".format(r.amount) }}</td>
+                                <td class="text-success fw-bold">₹ {{ "{:,.0f}".format(r.arrear) }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if results or leave_results %}
+        <div class="card mt-4 mb-4">
+            <div class="card-body">
+                <div class="alert alert-success text-center">
+                    <h4 class="mb-0">
+                        <i class="fas fa-rupee-sign me-2"></i>
+                        Total Arrear : ₹ {{ "{:,.0f}".format(total_arrear) }}
+                    </h4>
+                </div>
+                
+                <div class="text-center">
+                    <a href="/excel" class="btn btn-primary btn-lg me-2">
+                        <i class="fas fa-file-excel me-2"></i>
+                        Download Excel
+                    </a>
+                    <a href="/pdf" class="btn btn-danger btn-lg">
+                        <i class="fas fa-file-pdf me-2"></i>
+                        Download PDF
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
-
 </html>
